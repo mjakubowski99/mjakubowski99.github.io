@@ -95,6 +95,24 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
+        .contact-btn {
+            padding: 12px 24px;
+
+            color: #fff;
+            text-decoration: none;
+
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 8px;
+
+            font-weight: 600;
+            cursor: pointer;
+
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeInTop 3s ease-out forwards;
+        }
+
         nav a[href="#contact"]:hover {
             background: linear-gradient(45deg, #764ba2, #667eea);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
@@ -1057,8 +1075,7 @@
         <div class="welcome-text">
             <h1>Hi, I'm Michał</h1>
             <p class="about-me">
-                I'm professional <span class="highlight">PHP Backend Developer</span> with 5 years of experience. I specialize in <span class="highlight">Laravel</span> framework and PHP.
-                I develop APIs, admin panels and web applications. I automate tests and always try to write clean and organized code. I use AI tools and constantly learn new technologies.
+                I'm a professional <span class="highlight">PHP Backend Developer</span> with 5 years of experience. I specialize in <span class="highlight">Laravel</span> and PHP, building APIs, admin panels, and web applications. I write clean, maintainable code, automate testing, and leverage AI tools to deliver software faster.
             </p>
             <div class="skills-chips">
                 <span class="skill-chip">PHP</span>
@@ -1071,6 +1088,9 @@
                 <span class="skill-chip">Python</span>
                 <span class="skill-chip">FastAPI</span>
             </div>
+
+            <br/>
+            <a href="#contact" class="contact-btn">Contact Me</a>
         </div>
     </div>
 
@@ -1238,18 +1258,17 @@
                         </header>
         
                         <p class="project-description">
-                            A sophisticated language learning ecosystem. Originally built in Laravel, I've made
-                            a full rewrite to <strong>Python & FastAPI</strong> to leverage advanced NLP 
-                            capabilities and to leverage high-performance asynchronous processing.
+                            A language learning platform, fully rewritten from Laravel to <strong>Python & FastAPI</strong> to take advantage 
+                            of advanced NLP capabilities and high-performance asynchronous architecture.
                         </p>
         
                         <div class="project-details">
                             <h5>Technical Highlights:</h5>
                             <ul class="project-responsibilities">
-                                <li><strong>AI & NLP:</strong> Integrated LLMs (Gemini, Gemma) to power intelligent memory modeling and personalized learning paths.</li>
-                                <li><strong>Infrastructure & Ops:</strong> Built a production-ready environment using Docker, Nginx, and Uvicorn with a focus on scalability.</li>
+                                <li><strong>AI & NLP:</strong> Gemini integration </li>
+                                <li><strong>Infrastructure & Ops:</strong> Built a production-ready environment using Docker, Nginx, and Uvicorn</li>
                                 <li><strong>Observability:</strong> Implemented full-stack monitoring using OpenTelemetry and Jaeger for distributed tracing.</li>
-                                <li><strong>Algorithms:</strong> Designed complex memory modeling algorithms.</li>
+                                <li><strong>Algorithms:</strong> Implemented FSRS algorithm modeling human memory.</li>
                             </ul>
                         </div>
         
@@ -1281,9 +1300,6 @@
                         <li>Git / GitHub</li>
                         <li>Docker & Docker Compose</li>
                     </ul>
-                    <p class="tools-note">
-                        I utilize Docker and Docker Compose in every project to maintain consistent development environments.
-                    </p>
                 </div>
         
                 <div class="tools-category">
@@ -1294,9 +1310,6 @@
                         <li>Cursor</li>
                         <li>Github Copilot</li>
                     </ul>
-                    <p class="tools-note">
-                        I actively integrate AI tools to streamline my workflow and enhance code quality, with this website serving as a practical demonstration.
-                    </p>
                 </div>
         
             </div>
@@ -1306,15 +1319,15 @@
             <div class="bio-main">
                 <h2>About Me</h2>
                 <p class="bio-intro">
-                    I am a Backend Developer with a strong focus on building stable, long-term systems. 
-                    My expertise lies in navigating <strong>complex business logic</strong> and modernizing 
-                    large-scale monolithic applications. I believe in simple solutions, clean architecture, 
-                    and the "test-first" approach.
+                    I am a Backend Developer with a strong focus on building stable, maintainable, and scalable systems. 
+                    I have experience working with large monolithic applications and believe that good code should be easy to read 
+                    and self-explanatory. To ensure high code quality, I write automated tests, use static analysis tools, 
+                    apply design patterns, and follow Clean Architecture principles. I genuinely enjoy programming, 
+                    which motivates me to stay proactive, continuously improve my skills, and approach every project with dedication.
                 </p>
                 <p class="bio-intro">
                     Currently, I am expanding my engineering toolkit by mastering Python & FastAPI through personal projects, 
-                    focusing on building robust asynchronous APIs and leveraging LLM capabilities to enhance language learning process.
-                    I thrive in environments that value technical excellence and long-term product growth.
+                    focusing on building asynchronous APIs and leveraging LLM capabilities to enhance language learning process.
                 </p>
         
                 <div class="about-card-container">
@@ -1331,8 +1344,10 @@
                     <div class="about-card">
                         <h3>Personal Interests</h3>
                         <ul class="about-list">
-                            <li><strong>Astronomy: </strong>Learning about the vastness of the cosmos.</li>
-                            <li><strong>Psychology: </strong>Exploring human behavior and deepening self-awareness.</li>
+                            <li>Astronomy</li>
+                            <li>Psychology</li>
+                            <li>Programming</li>
+                            <li>TV Series</li>
                         </ul>
                     </div>
                 </div>
