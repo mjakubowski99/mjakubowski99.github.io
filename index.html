@@ -93,10 +93,18 @@
 
         nav a[href="#contact"] {
             color: white;
-            background: linear-gradient(45deg, #667eea, #764ba2);
             border: none;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(45deg, #2dd4bf, #0f766e);
+        }
+
+        nav a[href="#contact"]:hover {
+            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.4);
+            transform: translateY(-2px);
+        }
+
+        nav a[href="#contact"]::after {
+            display: none;
         }
 
         .contact-btn {
@@ -105,26 +113,20 @@
             color: #fff;
             text-decoration: none;
 
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #2dd4bf, #0f766e);
             border: none;
             border-radius: 8px;
 
             font-weight: 600;
             cursor: pointer;
 
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             animation: fadeInTop 3s ease-out forwards;
         }
 
-        nav a[href="#contact"]:hover {
-            background: linear-gradient(45deg, #764ba2, #667eea);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        .contact-btn:hover {
+            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.4);
             transform: translateY(-2px);
-        }
-
-        nav a[href="#contact"]::after {
-            display: none;
         }
 
         @media (max-width: 768px) {
@@ -168,8 +170,8 @@
                 radial-gradient(circle at 40% 10%, rgba(220, 38, 38, 0.08) 0%, transparent 45%),
                 radial-gradient(circle at 70% 90%, rgba(0, 0, 0, 0.4) 0%, transparent 60%),
                 rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
             z-index: 1;
             pointer-events: none;
         }
@@ -780,24 +782,29 @@
             display: inline-flex;
             align-items: center;
             padding: 12px 24px;
-            background: rgba(139, 92, 246, 0.6);
+
+            background: linear-gradient(45deg, #2dd4bf, #0f766e);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 2px solid rgba(167, 139, 250, 0.8);
+
+
             border-radius: 20px;
-            color: rgba(255, 255, 255, 1);
+
+            color: #ffffff;
             text-decoration: none;
+
             font-size: 1.1rem;
             font-weight: 600;
+
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
         }
 
         .project-card-link:hover {
-            background: rgba(139, 92, 246, 0.8);
-            border-color: rgba(167, 139, 250, 1);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.6);
+            background: linear-gradient(45deg, #34d399, #059669);
+            box-shadow: 0 6px 22px rgba(52, 211, 153, 0.55);
         }
 
         @media (max-width: 768px) {
@@ -1390,7 +1397,7 @@
                     <div class="about-card">
                         <h3>Personal Interests</h3>
                         <ul class="about-list">
-                            <li><a id="astronomy-btn">Astronomy(Click to see a proof ;))</a></li>
+                            <li><a id="astronomy-btn">Astronomy (click to discover an Easter egg)</a></li>
                             <li>Psychology</li>
                             <li>Programming</li>
                             <li>TV Series</li>
@@ -1602,8 +1609,8 @@
             <div class="footer-contact">
                 <div class="footer-contact-item">
                     <span class="label">Email</span>
-                    <a href="mailto:michalk415@gmail.com">
-                        michalk415@gmail.com
+                    <a href="mailto:jakubowskimichal1210@gmail.com">
+                        jakubowskimichal1210@gmail.com
                     </a>
                 </div>
 
