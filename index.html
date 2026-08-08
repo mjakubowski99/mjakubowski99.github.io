@@ -48,8 +48,8 @@
             z-index: 0;
             pointer-events: none;
             background-image:
-                linear-gradient(rgba(167, 139, 250, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(167, 139, 250, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(167, 139, 250, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
             background-size: 56px 56px;
             /* -webkit-mask-image: radial-gradient(ellipse 100% 85% at 50% 0%, #000 45%, transparent 95%);
             mask-image: radial-gradient(ellipse 100% 85% at 50% 0%, #000 45%, transparent 95%); */
@@ -257,10 +257,11 @@
         }
 
         .welcome-text h1 {
-            font-size: 3rem;
-            font-weight: 600;
+            font-size: 3.4rem;
+            font-weight: 800;
             margin: 0 0 30px 0;
-            line-height: 1.2;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
         }
 
         .welcome-text p {
@@ -483,6 +484,77 @@
             inset: -20px -40px;
             z-index: -1;
             border-radius: 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(167, 139, 250, 0.45);
+            border-radius: 50px;
+            background: rgba(139, 124, 246, 0.08);
+            color: var(--violet-soft);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInTop 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+            padding-bottom: 3px;
+            transition: all 0.25s ease;
+        }
+
+        .hero-link:hover {
+            color: var(--violet-soft);
+            border-color: var(--violet-soft);
+        }
+
+        .hero-link svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.25s ease;
+        }
+
+        .hero-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        .welcome-text h1 .highlight {
+            color: var(--violet-soft);
+        }
+
+        .highlight-2 {
+            background: linear-gradient(90deg, var(--indigo), var(--violet-soft));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .hero-cta-row {
+                justify-content: center;
+                gap: 16px;
+            }
         }
 
         .eyebrow {
@@ -1314,9 +1386,10 @@
     <div id="canvas-container">
         <div id="glass-overlay" class="frosted-glass-overlay"></div>
         <div id="summary-container" class="welcome-text">
-            <h1>Hi, I'm Michał</h1>
+            <span class="hero-badge">PHP Backend Developer</span>
+            <h1>Hello I'm <span class="highlight-2">Michal Jakubowski</span></h1>
             <p class="about-me">
-                I'm a commercial <span class="highlight">PHP Backend Developer</span> with 5 years of experience. I specialize in <span class="highlight">Laravel</span> and PHP, building APIs, admin panels, and web applications. I write clean, maintainable code, automate testing, and leverage AI tools to deliver software faster.
+                I'm a commercial <span class="highlight-2">PHP Backend Developer</span> with 5 years of experience. I specialize in <span class="highlight-2">Laravel</span> and PHP, building APIs, admin panels, and web applications. I write clean, maintainable code, automate testing, and leverage AI tools to deliver software faster.
             </p>
             <div class="skills-chips">
                 <span class="skill-chip">PHP</span>
@@ -1331,7 +1404,9 @@
             </div>
 
             <br/>
-            <a href="#contact" class="contact-btn">Contact Me</a>
+            <div class="hero-cta-row">
+                <a href="#contact" class="contact-btn">Contact Me</a>
+            </div>
         </div>
     </div>
 
@@ -1601,7 +1676,7 @@
     </div>
 
     <a href="#projects" id="scroll-cta" class="scroll-cta">
-        See realizations
+        See my work
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
@@ -1642,7 +1717,7 @@
         </div>
     </footer>
 
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         let scene, camera, renderer;
         let sun, planets = [];
