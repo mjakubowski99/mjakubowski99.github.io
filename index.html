@@ -191,11 +191,11 @@ body{transition:background-color .3s ease,color .3s ease}
     <div id="desktop-outside-work" class="rise rise-3 mt-8"></div>
 
     <template id="outside-work">
-        <p class="text-md font-medium text-zinc-400 dark:text-zinc-500 mb-2.5">
+        <p class="text-xl md:text-sm font-medium text-zinc-400 dark:text-zinc-500 mb-2 md:mb-1.5">
             Personal interests
         </p>
 
-        <ul class="space-y-2 text-sm">
+        <ul class="space-y-2 md:space-y-2 text-lg md:text-sm">
             <li>
                 <button
                     type="button"
@@ -205,7 +205,7 @@ body{transition:background-color .3s ease,color .3s ease}
                     Astronomy
                 </button>
 
-                <span class="block text-[11px] text-zinc-400 dark:text-zinc-500">
+                <span class="block text-sm md:text-[11px] text-zinc-400 dark:text-zinc-500 mt-1 md:mt-0">
                     tap for a stray fact
                 </span>
             </li>
@@ -218,18 +218,18 @@ body{transition:background-color .3s ease,color .3s ease}
             x-show="eggOpen"
             x-cloak
             @click.outside="eggOpen = false"
-            class="pop mt-3 rounded-xl border border-accent/30 bg-accent/5 dark:bg-accent/10 p-3"
+            class="pop mt-5 md:mt-3 rounded-xl border border-accent/30 bg-accent/5 dark:bg-accent/10 p-4 md:p-3"
         >
             <p
-                class="text-xs text-zinc-600 dark:text-zinc-300"
+                class="text-sm md:text-sm text-zinc-600 dark:text-zinc-300"
                 x-text="eggFact"
             ></p>
         </div>
-  </template>
+    </template>
 
 
     <div class="flex justify-center">
-      <a href="#contact" class="rise rise-4 shimmer mt-2 md:mt-5 w-1/2 md:w-full inline-flex items-center justify-center gap-2 bg-accent text-white text-sm font-medium py-3 rounded-full hover:bg-accent-light transition-colors">
+      <a href="#contact" class="rise rise-4 shimmer mt-2 md:mt-3 w-1/2 md:w-full inline-flex items-center justify-center gap-2 bg-accent text-white text-sm font-medium py-3 rounded-full hover:bg-accent-light transition-colors">
         Get in touch
       </a>
     </div>
@@ -288,7 +288,7 @@ body{transition:background-color .3s ease,color .3s ease}
     </section>
 
     <section id="about" class="scroll-mt-24 mt-20 max-w-xl">
-      <h2 class="rise font-display font-bold text-2xl md:text-3xl mb-6">How I work</h2>
+      <h2 class="rise font-display font-bold text-2xl md:text-3xl mb-6">A bit about me and how I work</h2>
       <p class="rise rise-1 text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
         I'm a backend developer focused on stable, maintainable, scalable systems, most of them large monolithic applications. Good code, to me, should be readable enough to explain itself. In practice that means automated tests, static analysis, deliberate design patterns, and Clean Architecture principles as defaults, not afterthoughts.
       </p>
@@ -301,9 +301,11 @@ body{transition:background-color .3s ease,color .3s ease}
         </p>
       </div>
 
+      <div id="mobile-outside-work" class="mt-5"></div>
+
     </section>
 
-    <section id="contact" class="scroll-mt-24 mt-24 mb-8">
+    <section id="contact" class="scroll-mt-16 mt-16 mb-8">
       <div class="max-w-xl rise rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 md:p-10 flex flex-col items-center">
         <p class="text-sm text-accent font-medium mb-2">Let's talk</p>
         <h2 class="font-display font-bold text-2xl md:text-3xl mb-6">
