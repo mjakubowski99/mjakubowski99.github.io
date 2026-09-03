@@ -1,376 +1,426 @@
 <!DOCTYPE html>
-<html lang="en" x-data="projects()" :class="{'dark':dark}" x-init="init()" class="scroll-smooth">
+<html lang="en" x-data="portfolio()" :class="{'dark':dark}" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Michal Jakubowski - Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet"/>
-  <script>
-    tailwind.config={
-      darkMode:'class',
-      theme:{
-        extend:{
-          fontFamily:{display:['PT Sans','sans-serif'],body:['DM Sans','sans-serif']},
-          colors:{
-            accent:'rgb(var(--color-accent) / <alpha-value>)',
-            'accent-light':'rgb(var(--color-accent-light) / <alpha-value>)',
-          }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Michał Jakubowski — Full portfolio of backend PHP / Laravel projects">
+<meta name="keywords" content="Michal Jakubowski, PHP developer, Laravel developer, portfolio">
+<meta name="author" content="Michal Jakubowski">
+<meta property="og:title" content="Michał Jakubowski — Portfolio">
+<meta property="og:description" content="Backend PHP developer specializing in Laravel — full project portfolio.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mjakubowski99.github.io/portfolio.html">
+<title>Portfolio — Michał Jakubowski</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
+      colors: {
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        'accent-light': 'rgb(var(--color-accent-light) / <alpha-value>)',
       }
     }
-  </script>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;}
-    html{font-family:'DM Sans',sans-serif;}
-    h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif;}
+  }
+}
+</script>
 
-    :root{
-      --color-accent: 5 150 105;       
-      --color-accent-light: 52 211 153;
-    }
+<style>
+*,*::before,*::after{box-sizing:border-box}
 
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);}
-    .reveal.visible{opacity:1;transform:translateY(0);}
-    .nav-link{position:relative;}
-    .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:currentColor;transition:width .25s cubic-bezier(.4,0,.2,1);}
-    .nav-link:hover::after{width:100%;}
-    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgb(var(--color-accent));border-radius:99px;}
-    body{transition:background-color .3s,color .3s;}
-    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4;}
-    .btn-primary{position:relative;overflow:hidden;}
-    .btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:rgba(255,255,255,.18);transform:skewX(-20deg);transition:left .4s cubic-bezier(.4,0,.2,1);}
-    .btn-primary:hover::after{left:160%;}
-    [x-cloak]{display:none!important;}
-    .photo-frame{position:relative;overflow:hidden;background:#e4e4e7;}
-    .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
-    .project-card{transition:transform .3s cubic-bezier(.4,0,.2,1),border-color .2s;}
-    .project-card:hover{transform:translateY(-4px);}
-  </style>
+html,body{font-family:'DM Sans',sans-serif}
+h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif}
+
+:root{
+  --color-accent: 5 150 105;
+  --color-accent-light: 52 211 153;
+}
+
+body{transition:background-color .3s ease,color .3s ease}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgb(var(--color-accent));border-radius:99px}
+
+.rise{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+}
+.rise.in{opacity:1;transform:translateY(0)}
+.rise-1{transition-delay:.05s}
+.rise-2{transition-delay:.1s}
+.rise-3{transition-delay:.15s}
+
+.shimmer{position:relative;overflow:hidden;isolation:isolate}
+.shimmer::after{
+  content:'';position:absolute;top:-20%;left:-80%;width:45%;height:140%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:skewX(-20deg);
+  transition:left .65s cubic-bezier(.16,1,.3,1);
+}
+.shimmer:hover::after{left:140%}
+
+.chip{transition:transform .2s cubic-bezier(.16,1,.3,1),border-color .2s ease,background-color .2s ease}
+.chip:hover{transform:translateY(-2px);border-color:rgb(var(--color-accent))}
+
+.filter-chip{transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+
+.entry{
+  border-left:2px solid rgb(228 228 231);
+  transition:border-color .3s ease;
+}
+.dark .entry{border-left-color:rgb(39 39 42)}
+.entry.active{border-left-color:rgb(var(--color-accent))}
+.entry .dot{
+  position:absolute;left:-6.5px;top:.4rem;
+  width:11px;height:11px;border-radius:999px;
+  background:rgb(244 244 245);
+  border:2px solid rgb(228 228 231);
+  transition:background-color .3s ease,border-color .3s ease;
+}
+.dark .entry .dot{background:rgb(24 24 27);border-color:rgb(63 63 70)}
+.entry.active .dot{background:rgb(var(--color-accent));border-color:rgb(var(--color-accent))}
+
+.thumb{overflow:hidden;background:#d4d4d8;border-radius:.75rem}
+.thumb img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.thumb:hover img{transform:scale(1.03)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rise{opacity:1;transform:none}
+}
+
+[x-cloak]{display:none!important}
+</style>
 </head>
-<body class="bg-zinc-150 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
 
-  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    :class="scrolled?'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5':'bg-transparent'">
-    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
-        <li><a href="index.html" class="nav-link text-zinc-600 font-medium">Home</a></li>
-        <li><a href="portfolio.html" class="nav-link text-accent font-medium">Portfolio</a></li>
-        <li><a href="index.html#about" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">About</a></li>
-        <li><a href="index.html#contact" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Contact</a></li>
-      </ul>
-      <div class="flex items-center gap-3">
-        <button @click="dark=!dark;localStorage.setItem('theme',dark?'dark':'light')" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" :aria-label="dark?'Light mode':'Dark mode'">
-          <svg x-show="!dark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-          <svg x-show="dark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-        </button>
-        <a href="index.html#contact" class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Contact me</a>
-        <button @click="mobileMenu=!mobileMenu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" aria-label="Toggle menu">
-          <svg x-show="!mobileMenu" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <svg x-show="mobileMenu" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-    </nav>
-    <div x-show="mobileMenu" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
-      <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
-        <li><a href="index.html" class="block text-zinc-700 dark:text-zinc-300">Home</a></li>
-        <li><a href="portfolio.html" class="block text-accent font-medium">Portfolio</a></li>
-        <li><a href="index.html#about" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">About</a></li>
-        <li><a href="index.html#contact" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">Contact</a></li>
-      </ul>
+<body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased font-body">
+
+<!-- slim top bar: identical to index.html -->
+<div class="sticky top-0 z-40 border-b border-zinc-200/70 dark:border-zinc-900 bg-zinc-100/90 dark:bg-zinc-950/90 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between text-sm">
+    <div class="flex items-center gap-6">
+      <a href="index.html" class="font-display font-bold tracking-tight">MJ</a>
+      <a href="index.html#work" class="text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors">Back to overview</a>
     </div>
+    <div class="flex items-center gap-3">
+      <button @click="dark=!dark" class="w-8 h-8 flex items-center justify-center rounded-full border border-zinc-300 dark:border-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-900 transition-colors" :aria-label="dark?'Light mode':'Dark mode'">
+        <svg x-show="!dark" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg x-show="dark" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-5xl mx-auto px-6 py-12 lg:py-16">
+
+  <!-- HERO -->
+  <header class="max-w-5xl">
+    <p class="rise text-sm text-accent font-medium mb-3">Portfolio</p>
+    <h1 class="rise rise-1 font-display font-bold text-3xl md:text-4xl leading-[1.15] mb-5">
+      List of all projects
+    </h1>
+    <p class="rise rise-2 text-zinc-500 dark:text-zinc-400 leading-relaxed">
+      Most of my professional time has gone into long-term products like Wholesome Yum. A few entries below are one-off jobs or after-hours projects, some are described only in general terms since I can't share client specifics publicly.
+    </p>
   </header>
 
-  <!-- mobile menu overlay — spójny z index.html -->
-  <div x-show="mobileMenu" x-cloak @click="mobileMenu=false"
-    x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-    class="md:hidden fixed inset-0 z-40 bg-zinc-900/50 backdrop-blur-[2px]" aria-hidden="true"></div>
+  <!-- FILTERS -->
+  <div class="rise rise-3 flex flex-wrap gap-1.5 mt-9 mb-12" role="list" aria-label="Filter projects">
+    <template x-for="f in filterOptions" :key="f.value">
+      <button
+        role="listitem"
+        @click="filter = f.value"
+        :aria-pressed="filter === f.value"
+        class="filter-chip text-[11px] px-3 py-1.5 rounded-full border"
+        :class="filter === f.value
+          ? 'bg-accent text-white border-accent'
+          : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-accent'"
+        x-text="f.label">
+      </button>
+    </template>
+  </div>
 
-  <main>
-    <section class="pt-36 pb-12 relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="max-w-6xl mx-auto px-6 relative z-10">
-        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Portfolio</p>
-        <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">All Projects</h1>
-        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed mb-8">A list of projects I've worked on. I've spent most of my professional career working on long-term projects, such as Wholesome Yum. Some projects are described only in general terms, as I’m unable to share specific details publicly.</p>
-        <div class="reveal flex flex-wrap gap-2">
-          <template x-for="f in filterOptions" :key="f.value">
-            <button
-              @click="filter = f.value"
-              :class="filter === f.value ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'"
-              class="text-sm px-4 py-1.5 rounded-full border transition-colors"
-              x-text="f.label">
-            </button>
+  <!-- PROJECT TIMELINE -->
+  <div class="space-y-12">
+    <template x-for="p in allProjects" :key="p.id">
+      <article
+        x-show="filter === 'all' || p.category === filter"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        :id="'cards-'+p.id"
+        class="entry active relative pl-7 scroll-mt-24"
+      >
+        <span class="dot"></span>
+
+        <div class="grid sm:grid-cols-[340px_1fr] gap-8 items-center">
+          <template x-if="p.img">
+            <a :href="p.url" class="thumb block w-full sm:w-[340px]">
+              <img :src="p.img" :alt="p.title" loading="lazy">
+            </a>
           </template>
-        </div>
-      </div>
-    </section>
 
-    <section class="pb-24">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="grid grid-cols-1 gap-6">
-          <template x-for="p in allProjects" :key="p.id">
-            <div
-              x-show="filter === 'all' || p.category === filter"
-              x-transition:enter="transition ease-out duration-300"
-              x-transition:enter-start="opacity-0 scale-95 translate-y-2"
-              x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-              x-transition:leave="transition ease-in duration-200"
-              x-transition:leave-start="opacity-100 scale-100"
-              x-transition:leave-end="opacity-0 scale-95"
-              :id="'cards-'+p.id"
-            >
-              <article class="project-card group flex flex-col md:flex-row">
-                <a :href="p.url" class="block w-full md:w-1/2 shrink-0 md:self-center">
-                  <img :src="p.img" :alt="p.title" class="rounded w-full h-auto object-cover" loading="lazy"/>
-                </a>
-                <div class="p-8 flex flex-col justify-center">
-                  <a :href="p.url">
-                    <h3 class="font-display font-bold text-4xl text-zinc-900 dark:text-white mb-3 group-hover:text-accent transition-colors" x-text="p.title"></h3>
-                  </a>
-                  <div class="flex flex-wrap gap-2 mb-4">
-                    <template x-for="tag in p.tags" :key="tag">
-                      <span class="text-sm px-3 py-1 rounded-full"
-                        :class="tag === p.categoryLabel ? 'bg-accent/10 dark:bg-accent/15 text-accent border border-accent/30 dark:border-accent/25' : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'"
-                        x-text="tag"></span>
-                    </template>
-                  </div>
-                  <p class="text-md text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6" x-text="p.desc"></p>
-                  <div class="mb-6 pt-4 border-t border-zinc-100 dark:border-zinc-800" x-show="p.role">
-                    <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-1.5">Role</p>
-                    <p class="text-sm font-medium text-zinc-900 dark:text-white mb-3" x-text="p.role"></p>
-                    <ul class="space-y-1.5" x-show="p.responsibilities && p.responsibilities.length">
-                      <template x-for="r in p.responsibilities" :key="r">
-                        <li class="flex items-start gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
-                          <span class="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" aria-hidden="true"></span>
-                          <span x-text="r"></span>
-                        </li>
-                      </template>
-                    </ul>
-                  </div>
-                  <div class="flex items-center gap-4">
-                    <template x-if="p.url">
-                      <a :href="p.url" class="text-sm font-medium text-zinc-900 dark:text-white bg-accent/80 hover:bg-accent-light px-5 py-2.5 rounded-full">Check it out →</a>
-                    </template>
-                    <span class="text-sm font-bold text-zinc-400" x-text="p.year"></span>
-                  </div>
-                </div>
-              </article>
+          <div>
+            <div class="flex items-baseline justify-between gap-4 flex-wrap mb-1.5">
+              <h2 class="font-display font-bold text-2xl" x-text="p.title"></h2>
+              <span class="text-xs font-medium text-zinc-400" x-text="p.year"></span>
             </div>
-          </template>
-        </div>
-        <div x-show="visibleCount === 0" x-cloak class="text-center py-20">
-          <p class="text-zinc-400 text-sm">No projects in this category yet.</p>
-        </div>
-      </div>
-    </section>
 
-  </main>
+            <div class="flex flex-wrap gap-1.5 mb-4 mt-2">
+              <template x-for="tag in p.tags" :key="tag">
+                <span class="chip text-[11px] px-2.5 py-1 rounded-full border"
+                  :class="tag === p.categoryLabel
+                    ? 'bg-accent/10 dark:bg-accent/15 text-accent border-accent/30 dark:border-accent/25'
+                    : 'bg-white dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800'"
+                  x-text="tag"></span>
+              </template>
+            </div>
 
-  <footer class="border-t border-zinc-100 dark:border-zinc-900">
-    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-zinc-400">© <span id="yr"></span> Michał Jakubowski </p>
-      <p class="text-xs text-zinc-500">Built with
-        <a href="https://tailwindcss.com" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Tailwind CSS</a>
-        &amp;
-        <a href="https://alpinejs.dev" rel="noopener noreferrer" target="_blank" class="hover:text-accent transition-colors">Alpine.js</a>
-      </p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5" x-text="p.desc"></p>
+
+            <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5" x-show="p.role">
+              <p class="text-[11px] font-medium text-zinc-400 dark:text-zinc-500 mb-1">Role</p>
+              <p class="text-sm font-medium mb-3" x-text="p.role"></p>
+              <ul class="space-y-1.5" x-show="p.responsibilities && p.responsibilities.length">
+                <template x-for="r in p.responsibilities" :key="r">
+                  <li class="flex items-start gap-2.5 text-sm text-zinc-500 dark:text-zinc-400">
+                    <span class="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" aria-hidden="true"></span>
+                    <span x-text="r"></span>
+                  </li>
+                </template>
+              </ul>
+            </div>
+
+            <a :href="p.url" x-show="p.url" target="_blank" rel="noopener noreferrer"
+              class="mt-4 inline-flex text-sm font-medium text-accent hover:text-accent-light transition-colors">
+              Visit ↗
+            </a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <div x-show="visibleCount === 0" x-cloak class="text-center py-16">
+      <p class="text-zinc-400 text-sm">No projects in this category yet.</p>
     </div>
-  </footer>
+  </div>
 
-  <script>
-    function projects() {
-      return {
-        dark: false,
-        scrolled: false,
-        mobileMenu: false,
-        filter: 'all',
-        filterOptions: [
-          {value: 'all', label: 'All'},
-          {value: 'long-professional', label: 'Long-term projects' },
-          {value: 'short-professional', label: 'One-off projects' },
-          {value: 'side projects', label: 'After hours projects' },
-        ],
- 
-        allProjects: [
-          { 
-            id:1,  
-            title:'Wholesome Yum',  
-            category:'long-professional',      
-            categoryLabel:'SaaS',         
-            tags:['Laravel', 'API', 'MySQL', 'Payment integrations', 'Large monolith', 'Clean architecture', 'Docker', 'PHPUnit', 'Github Copilot'],           
-            year:'2024-present', 
-            desc:'Wholesome Yum is an app combining healthy recipes, meal planning, grocery lists, and macro tracking. As a backend developer, I am solely responsible for maintaining the API for mobile apps, the admin panel and for monitoring multiple integrations to ensure that everything runs smoothly.',    
-            img:'images/wholesomeyum.png',  
-            url:'https://wholesomeyum.com',
-            role: 'Backend Developer',
-            responsibilities: [
-              'Maintaining and developing a unified API for mobile (iOS/Android), web, and admin dashboards.',
-              'Maintaining and troubleshooting subscription-related issues with the App Store, Google Play, and ThriveCart',
-              'Optimizing database queries and system performance while resolving concurrency issues',
-              'Synchronizing data across WordPress, Kit.com, and external payment processors'
-            ]
-          },
-          { 
-            id:2,  
-            title:'Vocasmart',  
-            category:'side projects',      
-            categoryLabel:'AI Tool',         
-            tags:['Laravel', 'AI', 'Laravel Filament', 'Tailwind', 'PHPUnit', 'FastAPI', 'Docker', 'Nginx', 'OpenTelemetry', 'Cursor', 'CQRS'],
-            year:'2024-present',         
-            desc:"VocaSmart is an AI-powered ecosystem designed to bridge the gap between generic language apps and real-world fluency. As a backend developer, I am responsible for the API side and server management of the project",    
-            img:'images/vocasmart.png',  
-            url:'https://vocasmart.pl',
-            role: 'Backend Developer/DevOps',
-            responsibilities: [
-              'Building a content management system in Laravel Filament',
-              'Building a production-ready environment using Docker, Nginx, and Uvicorn',
-              'Implementing full-stack monitoring using OpenTelemetry and Jaeger for distributed tracing',
-              'Implementing a spaced repetition algorithm modeling human memory.',
-              'Implementing new exercises based on flashcards',
-              'Designing new functionalities'
-            ] 
-          },
-          { 
-            id:3,  
-            title:'ABC365',  
-            category:'long-professional',      
-            categoryLabel:'SaaS',         
-            tags:['Laravel', 'API', 'MySQL', 'Payments integration', 'Large monolith', 'Docker', 'PHPUnit', 'Github Copilot'],
-            year:'2023-present',         
-            desc:'ABC365 is a work management system featuring a Task Board, Leave Requests, and Time Tracking, with native desktop applications. As a backend developer, I was responsible for maintaining the project and developing new features.',    
-            img:'images/abc365.png',  
-            url:'https://abc365.com',
-            role: 'Backend Developer',
-            responsibilities: [
-              'Refactoring legacy codebase and upgrading core stack (PHP, Laravel)',
-              'Integrating external services: OAuth (Google, Microsoft), Payments, and Automation (Tally)',
-              'Creating Docker-based local environments',
-              'Designing and implementing new modules (including Leave Requests, complex planning features and a new payment system)',
-            ] 
-          },
-          {
-            id:4,
-            title: 'Shopping Mall App',
-            category: 'long-professional',
-            categoryLabel: 'SaaS',
-            tags: ['Laravel', 'Laravel Nova', 'PostgreSQL', 'Vue.js', 'Azure OCR', 'Clean architecture', 'Docker', 'PHPUnit'],
-            year: '2023-2026',
-            desc: "I was part of the team responsible for developing the backend and admin panel of a mobile application for a major retail client.",
-            img: 'images/mall.png',
-            url: null,
-            role: 'Backend Developer',
-            responsibilities: [
-              'Developing functionality for various prize-based contests and promotional campaigns',
-              'Building a comprehensive admin panel for managing a customer loyalty program',
-              'Developing tools for configuring and managing campaigns and contests',
-              'Implementing reward management, including reward distribution and approval workflows',
-              'Developing functionality for reviewing and monitoring scanned receipts',
-              'Implementing validation and monitoring mechanisms for the loyalty program',
-              'Implementing dashboards for tracking key user engagement metrics and event participation'
-            ]
-          },
-          { 
-            id:5,  
-            title:'AICA',  
-            category:'short-professional',      
-            categoryLabel:'SaaS',         
-            tags:['Laravel', 'Laravel Nova', 'PostgreSQL', 'Vue.js', 'Docker', 'PHPUnit'],
-            year:'2023-2024',         
-            desc:"AICA is based on modern artificial intelligence models and is an advanced assistant. My role in the project was to design and develop a dashboard for monitoring chatbot conversations, usage statistics, and overall system activity. The project is no longer available online.",    
-            img:'images/aica.png',  
-            url:null,
-            role: 'Fullstack Developer',
-            responsibilities: [
-              'Creating Vue.js tools to inspect user chats',
-              'Implementing key user engagement metrics',
-              'Developing tools to update knowledge base for an AI Assistant'
-            ] 
-          },
-          { 
-            id:6,  
-            title:'Eszpitale',  
-            category:'long-professional',      
-            categoryLabel:'Internal System',         
-            tags:['Laravel', 'MySQL', 'jQuery', 'Bootstrap', 'Docker', 'PHPUnit'],
-            year:'2024-present',         
-            desc:"Eszpitale is an internal system designed to support hospital staff in their daily work. As a fullstack developer, I took over the maintenance and development of the project.",    
-            img:'images/eszpitale.png',  
-            url:null,
-            role: 'Fullstack Developer',
-            responsibilities: [
-              'Fixing performance of slow main website pages',
-              'Adding new reporting features',
-              'Strengthening access control and authorization logic'
-            ]
-          },
-          { 
-            id:7,  
-            title:'Kia website',  
-            category:'short-professional',      
-            categoryLabel:'Website',         
-            tags:['Laravel', 'MySQL', 'jQuery', 'Bootstrap', 'Docker', 'PHPUnit'],
-            year:'2024',         
-            desc:"I improved the filtering functionality on the Kia website, providing a better user experience, and introduced integration tests to the project.",    
-            img:'images/kia.png',  
-            url:'https://kia.fr',
-            role: 'Fullstack Developer',
-            responsibilities: [
-              'Refactoring the vehicle filtering logic to improve usability and result accuracy',
-              'Introducing integration tests in the project', 
-              'Fixing performance and UX issues reported by the client'
-            ]
-          },
-          { 
-            id:8,  
-            title:'Invoice OCR',  
-            category:'short-professional',      
-            categoryLabel:'AI Tool',         
-            tags:['Laravel', 'Laravel Nova', 'PostgreSQL', 'Vue.JS', 'Azure OCR', 'AI', 'Docker', 'PHPUnit'],
-            year:'2023-2024',         
-            desc:"For a marketing agency client, I developed an invoice scanning system that eliminated the need for manual data entry into the client's system.",    
-            img:'images/nova.png',  
-            url:null,
-            role: 'Fullstack Developer',
-            responsibilities: [
-              'Developing tool in Vue.js handling invoice processing',
-              'Integrating Azure OCR API to read all required fields from the invoice'
-            ]
-          }
-        ],
- 
-        get visibleCount() {
-          if (this.filter === 'all') return this.allProjects.length;
-          return this.allProjects.filter(p => p.category === this.filter).length;
-        },
- 
-        init() {
-          this.dark = localStorage.getItem('theme') === 'dark'
-            || !localStorage.getItem('theme');
- 
-          window.addEventListener('scroll', () => {
-            this.scrolled = window.scrollY > 20;
-          }, { passive: true });
- 
-          this.$nextTick(() => {
-            const obs = new IntersectionObserver(entries => {
-              entries.forEach(e => {
-                if (e.isIntersecting) {
-                  e.target.classList.add('visible');
-                  obs.unobserve(e.target);
-                }
-              });
-            }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-            document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-          });
-        }
+  <!-- CONTACT CTA -->
+  <div class="max-w-xl mx-auto rise mt-16 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 md:p-10 text-center">
+    <p class="text-sm text-accent font-medium mb-2">Let's talk</p>
+    <h2 class="font-display font-bold text-xl md:text-3xl mb-6">
+      I'm excited to work on your project
+    </h2>
+    <a href="index.html#contact" class="shimmer inline-flex bg-accent text-white font-display font-bold text-sm px-7 py-3.5 rounded-xl hover:bg-accent-light transition-colors">
+      Get in touch
+    </a>
+  </div>
+</div>
+
+<footer class="border-t border-zinc-200/70 dark:border-zinc-900">
+  <div class="max-w-6xl mx-auto px-6 min-h-[64px] flex items-center justify-center text-xs text-zinc-400">
+    <p><span id="yr"></span> Michał Jakubowski</p>
+  </div>
+</footer>
+
+<script>
+function portfolio() {
+  return {
+    dark: false,
+    filter: 'all',
+    filterOptions: [
+      {value: 'all', label: 'All'},
+      {value: 'long-professional', label: 'Long-term projects'},
+      {value: 'short-professional', label: 'One-off projects'},
+      {value: 'side projects', label: 'After hours projects'},
+    ],
+    allProjects: [
+      {
+        id:1,
+        title:'Wholesome Yum',
+        category:'long-professional',
+        categoryLabel:'SaaS',
+        tags:['Laravel', 'API', 'MySQL', 'Payment integrations', 'Large monolith', 'Clean architecture', 'Docker', 'PHPUnit', 'Github Copilot'],
+        year:'2024-present',
+        desc:'Wholesome Yum is an app combining healthy recipes, meal planning, grocery lists, and macro tracking. As a backend developer, I am solely responsible for maintaining the API for mobile apps, the admin panel and for monitoring multiple integrations to ensure that everything runs smoothly.',
+        img:'images/wholesomeyum.png',
+        url:'https://wholesomeyum.com',
+        role: 'Backend Developer',
+        responsibilities: [
+          'Maintaining and developing a unified API for mobile (iOS/Android), web, and admin dashboards.',
+          'Maintaining and troubleshooting subscription-related issues with the App Store, Google Play, and ThriveCart',
+          'Optimizing database queries and system performance while resolving concurrency issues',
+          'Synchronizing data across WordPress, Kit.com, and external payment processors'
+        ]
+      },
+      {
+        id:2,
+        title:'Vocasmart',
+        category:'side projects',
+        categoryLabel:'AI Tool',
+        tags:['Laravel', 'AI', 'Laravel Filament', 'Tailwind', 'PHPUnit', 'FastAPI', 'Docker', 'Nginx', 'OpenTelemetry', 'Cursor', 'CQRS'],
+        year:'2024-present',
+        desc:"VocaSmart is an AI-powered ecosystem designed to bridge the gap between generic language apps and real-world fluency. As a backend developer, I am responsible for the API side and server management of the project",
+        img:'images/vocasmart.png',
+        url:'https://vocasmart.pl',
+        role: 'Backend Developer/DevOps',
+        responsibilities: [
+          'Building a content management system in Laravel Filament',
+          'Building a production-ready environment using Docker, Nginx, and Uvicorn',
+          'Implementing full-stack monitoring using OpenTelemetry and Jaeger for distributed tracing',
+          'Implementing a spaced repetition algorithm modeling human memory.',
+          'Implementing new exercises based on flashcards',
+          'Designing new functionalities'
+        ]
+      },
+      {
+        id:3,
+        title:'ABC365',
+        category:'long-professional',
+        categoryLabel:'SaaS',
+        tags:['Laravel', 'API', 'MySQL', 'Payments integration', 'Large monolith', 'Docker', 'PHPUnit', 'Github Copilot'],
+        year:'2023-present',
+        desc:'ABC365 is a work management system featuring a Task Board, Leave Requests, and Time Tracking, with native desktop applications. As a backend developer, I was responsible for maintaining the project and developing new features.',
+        img:'images/abc365.png',
+        url:'https://abc365.eu',
+        role: 'Backend Developer',
+        responsibilities: [
+          'Refactoring legacy codebase and upgrading core stack (PHP, Laravel)',
+          'Integrating external services: OAuth (Google, Microsoft), Payments, and Automation (Tally)',
+          'Creating Docker-based local environments',
+          'Designing and implementing new modules (including Leave Requests, complex planning features and a new payment system)',
+        ]
+      },
+      {
+        id:4,
+        title: 'Shopping Mall App',
+        category: 'long-professional',
+        categoryLabel: 'SaaS',
+        tags: ['Laravel', 'Laravel Nova', 'PostgreSQL', 'Vue.js', 'Azure OCR', 'Clean architecture', 'Docker', 'PHPUnit'],
+        year: '2023-2026',
+        desc: "I was part of the team responsible for developing the backend and admin panel of a mobile application for a major retail client.",
+        img: 'images/mall.png',
+        url: null,
+        role: 'Backend Developer',
+        responsibilities: [
+          'Developing functionality for various prize-based contests and promotional campaigns',
+          'Building a comprehensive admin panel for managing a customer loyalty program',
+          'Developing tools for configuring and managing campaigns and contests',
+          'Implementing reward management, including reward distribution and approval workflows',
+          'Developing functionality for reviewing and monitoring scanned receipts',
+          'Implementing validation and monitoring mechanisms for the loyalty program',
+          'Implementing dashboards for tracking key user engagement metrics and event participation'
+        ]
+      },
+      {
+        id:5,
+        title:'AICA',
+        category:'short-professional',
+        categoryLabel:'SaaS',
+        tags:['Laravel', 'Laravel Nova', 'PostgreSQL', 'Vue.js', 'Docker', 'PHPUnit'],
+        year:'2023-2024',
+        desc:"AICA is based on modern artificial intelligence models and is an advanced assistant. My role in the project was to design and develop a dashboard for monitoring chatbot conversations, usage statistics, and overall system activity. The project is no longer available online.",
+        img:'images/aica.png',
+        url:null,
+        role: 'Fullstack Developer',
+        responsibilities: [
+          'Creating Vue.js tools to inspect user chats',
+          'Implementing key user engagement metrics',
+          'Developing tools to update knowledge base for an AI Assistant'
+        ]
+      },
+      {
+        id:6,
+        title:'Eszpitale',
+        category:'long-professional',
+        categoryLabel:'Internal System',
+        tags:['Laravel', 'MySQL', 'jQuery', 'Bootstrap', 'Docker', 'PHPUnit'],
+        year:'2024-present',
+        desc:"Eszpitale is an internal system designed to support hospital staff in their daily work. As a fullstack developer, I took over the maintenance and development of the project.",
+        img:'images/eszpitale.png',
+        url:null,
+        role: 'Fullstack Developer',
+        responsibilities: [
+          'Fixing performance of slow main website pages',
+          'Adding new reporting features',
+          'Strengthening access control and authorization logic'
+        ]
+      },
+      {
+        id:7,
+        title:'Kia website',
+        category:'short-professional',
+        categoryLabel:'Website',
+        tags:['Laravel', 'MySQL', 'jQuery', 'Bootstrap', 'Docker', 'PHPUnit'],
+        year:'2024',
+        desc:"I improved the filtering functionality on the Kia website, providing a better user experience, and introduced integration tests to the project.",
+        img:'images/kia.png',
+        url:'https://kia.fr',
+        role: 'Fullstack Developer',
+        responsibilities: [
+          'Refactoring the vehicle filtering logic to improve usability and result accuracy',
+          'Introducing integration tests in the project',
+          'Fixing performance and UX issues reported by the client'
+        ]
+      },
+      {
+        id:8,
+        title:'Invoice OCR',
+        category:'short-professional',
+        categoryLabel:'AI Tool',
+        tags:['Laravel', 'Laravel Nova', 'PostgreSQL', 'Vue.JS', 'Azure OCR', 'AI', 'Docker', 'PHPUnit'],
+        year:'2023-2024',
+        desc:"For a marketing agency client, I developed an invoice scanning system that eliminated the need for manual data entry into the client's system.",
+        img:'images/nova.png',
+        url:null,
+        role: 'Fullstack Developer',
+        responsibilities: [
+          'Developing tool in Vue.js handling invoice processing',
+          'Integrating Azure OCR API to read all required fields from the invoice'
+        ]
+      }
+    ],
+
+    get visibleCount() {
+      if (this.filter === 'all') return this.allProjects.length;
+      return this.allProjects.filter(p => p.category === this.filter).length;
+    },
+
+    init() {
+      this.dark = localStorage.getItem('theme') === 'dark' || !localStorage.getItem('theme');
+      this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+      document.querySelectorAll('.rise').forEach(el => io.observe(el));
+
+      document.getElementById('yr').textContent = new Date().getFullYear();
+
+      // if arriving via a #cards-N deep link, scroll to it once Alpine has rendered
+      if (location.hash.startsWith('#cards-')) {
+        this.$nextTick(() => {
+          document.querySelector(location.hash)?.scrollIntoView({ block: 'start' });
+        });
       }
     }
-
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
+  }
+}
+</script>
 
 </body>
 </html>
