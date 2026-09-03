@@ -142,7 +142,7 @@ body{transition:background-color .3s ease,color .3s ease}
         role="listitem"
         @click="filter = f.value"
         :aria-pressed="filter === f.value"
-        class="filter-chip text-[11px] px-3 py-1.5 rounded-full border"
+        class="filter-chip text-[11px] px-3 py-2 rounded-full border"
         :class="filter === f.value
           ? 'bg-accent text-white border-accent'
           : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-accent'"
@@ -182,7 +182,7 @@ body{transition:background-color .3s ease,color .3s ease}
 
             <div class="flex flex-wrap gap-1.5 mb-4 mt-2">
               <template x-for="tag in p.tags" :key="tag">
-                <span class="chip text-[11px] px-2.5 py-1 rounded-full border"
+                <span class="chip text-[11px] px-3 py-2 rounded-full border"
                   :class="tag === p.categoryLabel
                     ? 'bg-accent/10 dark:bg-accent/15 text-accent border-accent/30 dark:border-accent/25'
                     : 'bg-white dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800'"
@@ -222,7 +222,7 @@ body{transition:background-color .3s ease,color .3s ease}
   <!-- CONTACT CTA -->
   <div class="max-w-xl mx-auto rise mt-16 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 md:p-10 text-center">
     <p class="text-sm text-accent font-medium mb-2">Let's talk</p>
-    <h2 class="font-display font-bold text-xl md:text-3xl mb-4">
+    <h2 class="font-display font-bold text-lg md:text-2xl mb-4">
       I'm excited to work on your project
     </h2>
     <a href="index.html#contact" class="shimmer mt-4 inline-flex bg-accent text-white font-display font-medium text-sm px-4 py-3 rounded-full hover:bg-accent-light transition-colors">
