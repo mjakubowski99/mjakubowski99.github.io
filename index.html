@@ -146,7 +146,7 @@ body{transition:background-color .3s ease,color .3s ease}
     <ul class="flex flex-col gap-3 text-sm">
       <li><a href="#intro" @click="mobileNav=false" class="sidelink block" :class="s==='intro'?'on':''">Intro</a></li>
       <li><a href="#work" @click="mobileNav=false" class="sidelink block" :class="s==='work'?'on':''">Selected work</a></li>
-      <li><a href="#about" @click="mobileNav=false" class="sidelink block" :class="s==='about'?'on':''">Approach</a></li>
+      <li><a href="#about" @click="mobileNav=false" class="sidelink block" :class="s==='about'?'on':''">About me</a></li>
       <li><a href="#contact" @click="mobileNav=false" class="sidelink block" :class="s==='contact'?'on':''">Contact</a></li>
     </ul>
   </div>
@@ -248,7 +248,7 @@ body{transition:background-color .3s ease,color .3s ease}
       </p>
     </template>
 
-    <section id="work" class="scroll-mt-12 mt-8">
+    <section id="work" class="scroll-mt-12 mt-12">
       <div class="rise flex items-baseline justify-between gap-4 mb-8">
         <h2 class="font-display font-bold text-2xl md:text-3xl">Selected work</h2>
         <a href="portfolio.html" class="text-sm text-zinc-400 hover:text-accent transition-colors whitespace-nowrap">Full portfolio</a>
@@ -278,7 +278,7 @@ body{transition:background-color .3s ease,color .3s ease}
                 </div>
                 <div class="flex gap-4 text-sm mt-4">
                   <a :href="card.url" class="font-medium text-accent hover:text-accent-light transition-colors">Visit ↗</a>
-                  <a :href="'portfolio.html#cards-'+card.id" class="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">Learn more</a>
+                  <a :href="'portfolio.html#cards-'+card.id" class="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">Learn more about my role</a>
                 </div>
               </div>
             </div>
@@ -287,7 +287,7 @@ body{transition:background-color .3s ease,color .3s ease}
       </div>
     </section>
 
-    <section id="about" class="scroll-mt-24 mt-20 max-w-xl">
+    <section id="about" class="scroll-mt-24 mt-24 max-w-xl mb-8">
       <h2 class="rise font-display font-bold text-2xl md:text-3xl mb-6">A bit about me and how I work</h2>
       <p class="rise rise-1 text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
         I'm a backend developer focused on stable, maintainable, scalable systems, most of them large monolithic applications. Good code, to me, should be readable enough to explain itself. In practice that means automated tests, static analysis, deliberate design patterns, and Clean Architecture principles as defaults, not afterthoughts.
@@ -305,7 +305,7 @@ body{transition:background-color .3s ease,color .3s ease}
 
     </section>
 
-    <section id="contact" class="scroll-mt-16 mt-16 mb-8">
+    <section id="contact" class="scroll-mt-24 mt-24 mb-8">
       <div class="max-w-xl rise rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 md:p-10 flex flex-col items-center">
         <p class="text-sm text-accent font-medium mb-2">Let's talk</p>
         <h2 class="font-display font-bold text-2xl mb-6">
@@ -352,7 +352,7 @@ function app() {
     navItems: [
       { id: 'intro',   label: 'Intro' },
       { id: 'work',    label: 'Selected work' },
-      { id: 'about',   label: 'Approach' },
+      { id: 'about',   label: 'About me' },
       { id: 'contact', label: 'Contact' },
     ],
     eggFacts: [
@@ -425,6 +425,7 @@ function app() {
       this.eggOpen = true;
     },
     init() {
+      renderTemplates();
       this.dark = localStorage.getItem('theme') === 'dark' || !localStorage.getItem('theme');
       this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
 
@@ -433,11 +434,11 @@ function app() {
       }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
       document.querySelectorAll('.rise').forEach(el => io.observe(el));
 
-      const sectionIds = ['intro', 'work', 'about', 'contact'];
-      const secIo = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) this.s = e.target.id; });
-      }, { rootMargin: '-45% 0px -45% 0px' });
-      sectionIds.forEach(id => { const el = document.getElementById(id); if (el) secIo.observe(el); });
+       const sectionIds = ['intro', 'work', 'about', 'contact'];
+        const secIo = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) this.s = e.target.id; });
+        }, { rootMargin: '-35% 0px -55% 0px' });
+        sectionIds.forEach(id => { const el = document.getElementById(id); if (el) secIo.observe(el); });
 
       document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -499,7 +500,6 @@ function renderTemplates() {
   renderTemplate('[name="intro"]', '[name="mobile-intro"]', '[name="desktop-intro"]', 'intro');
 }
 
-document.addEventListener('DOMContentLoaded', renderTemplates);
 window.addEventListener('resize', renderTemplates);
 </script>
 
